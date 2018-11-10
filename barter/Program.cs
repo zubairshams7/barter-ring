@@ -12,7 +12,8 @@ namespace Barter
             Console.WriteLine("-------");
 
             Participants participants = new Participants();
-            DataGen.CreateSeedData(participants);
+            //DataGen.CreateSeedData(participants);
+            DataGen.CreateSeedDataFromFile(participants);
 
             foreach (Participant participant in participants)
                 participant.Print();
@@ -31,6 +32,12 @@ namespace Barter
 
     class DataGen
     {
+        public static void CreateSeedDataFromFile(Participants users)
+        {
+            FileReader file = new FileReader(@"..\..\..\Input\booklist.txt", users);
+            file.Read();
+        }
+
         public static void CreateSeedData(Participants users)
         {
             Participant noman = new Participant(new Person("Noman"));
